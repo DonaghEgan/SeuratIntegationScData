@@ -7,6 +7,11 @@ library(fgsea)
 library(msigdbr)
 library(pheatmap)
 
+# Rationale: Following integration and cell annotation, certain cells changed annotations to something different. The purpose
+# of this function is to compare cells who's annotation changed from those that did not. Comparisons are made through 
+# differential expression analysis, followed by gene set enrichment analysis. 
+
+
 #' @param batch "string" input of the batch (melanoma/bcc)
 #' @param orig.ident "string" input of the originally identity of the cluster being compared. 
 #' @param compare list of length 2; contains new identity in string format of each cluster
