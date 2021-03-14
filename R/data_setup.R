@@ -23,5 +23,8 @@ immune_combined <- RenameIdents(immune_combined, `0` = "Naive CD4 T cells", `1` 
 # read in cell identity matrix
 cell_ident_matrix <- readRDS("/home/degan/integration_2.0_march/saved_objects/integrated_annotated_2.0.Rds")
 
+# loading in melanoma counts matrix 
+counts_mel <- read.csv("/mnt/Data/Vadim/POIAZ/Marina/SCENICdata/whole_set/exprMat.csv", row.names = "X")
+colnames(counts_mel) <- gsub("\\.", "-", colnames(counts_mel))
 
 
