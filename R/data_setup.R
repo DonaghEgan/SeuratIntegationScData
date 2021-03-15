@@ -27,4 +27,9 @@ cell_ident_matrix <- readRDS("/home/degan/integration_2.0_march/saved_objects/in
 counts_mel <- read.csv("/mnt/Data/Vadim/POIAZ/Marina/SCENICdata/whole_set/exprMat.csv", row.names = "X")
 colnames(counts_mel) <- gsub("\\.", "-", colnames(counts_mel))
 
+# reading in BCC counts data 
+tpm_raw_file <- "~/BCC_data/GSE123813_bcc_scRNA_counts.txt"
+bcc_counts <- read.table(tpm_raw_file,head=T,sep="\t",quote=NULL,stringsAsFactors=F)
+
+
 

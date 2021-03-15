@@ -6,6 +6,7 @@ library(tidyverse)
 library(fgsea)
 library(msigdbr)
 library(pheatmap)
+library(Seurat)
 
 # Rationale: Following integration and cell annotation, certain cells changed annotations to something different. The purpose
 # of this function is to compare cells who's annotation changed from those that did not. Comparisons are made through 
@@ -13,7 +14,7 @@ library(pheatmap)
 
 
 #' @param batch "string" input of the batch (melanoma/bcc)
-#' @param orig.ident "string" input of the originally identity of the cluster being compared. 
+#' @param orig.ident "string" input of the original identity of the cluster being compared. 
 #' @param compare list of length 2; contains new identity in string format of each cluster
 #' @param counts.matrix counts matrix - should relate to counts from specified batch
 #' @param cell.ident.matrix matrix containing batch, new annotation, and old annotation info 
@@ -56,8 +57,16 @@ compare_cluster <- function(batch, orig.ident, compare, counts.matrix, cell.iden
   
 }
 
+compare_tregs_mel <- compare_cluster("melanoma","Regulatory_T-cells", list("Chronically act/ex CD8 T cells", "Tregs"), counts_mel, cell.ident.matrix = cell_ident_matrix)
+compare_cd8_tregs_bcc <- compare_cluster("bcc","CD8_ex_T_cells", list("Tregs", "CD8 exhausted T cells"), bcc_counts, cell.ident.matrix = cell_ident_matrix)
 
-test_compare <- compare_cluster("melanoma","Regulatory_T-cells", list("Chronically act/ex CD8 T cells", "Tregs"), counts_mel, cell.ident.matrix = cell_ident_matrix)
+
+
+
+
+
+
+
 
 
 
