@@ -31,5 +31,8 @@ colnames(counts_mel) <- gsub("\\.", "-", colnames(counts_mel))
 tpm_raw_file <- "~/BCC_data/GSE123813_bcc_scRNA_counts.txt"
 bcc_counts <- read.table(tpm_raw_file,head=T,sep="\t",quote=NULL,stringsAsFactors=F)
 
-
+# read in immune combined seurat object from integration folder
+# @data = normalized counts - used for DE analysis 
+immune_combined <- readRDS("/home/degan/integration_2.0_march/saved_objects/immune_combined.Rds")
+combined_counts <- immune_combined@assays[["RNA"]]@data
 

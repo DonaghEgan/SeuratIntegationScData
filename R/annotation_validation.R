@@ -17,7 +17,7 @@ library(EnvStats)
 #' @param batch "string" input of the batch (melanoma/bcc)
 #' @param orig.ident "string" input of the original identity of the cluster being compared. 
 #' @param compare list of length 2; contains new identity in string format of each cluster
-#' @param counts.matrix counts matrix - should relate to counts from specified batch
+#' @param counts.matrix counts matrix - in this case using normalised counts - from a combined melanoma and bcc seurat object
 #' @param cell.ident.matrix matrix containing batch, new annotation, and old annotation info 
 
 
@@ -58,8 +58,8 @@ compare_cluster <- function(batch, orig.ident, compare, counts.matrix, cell.iden
   
 }
 
-compare_tregs_mel <- compare_cluster("melanoma","Regulatory_T-cells", list("Chronically act/ex CD8 T cells", "Tregs"), counts_mel, cell.ident.matrix = cell_ident_matrix)
-compare_cd8_tregs_bcc <- compare_cluster("BCC","CD8_ex_T_cells", list("Tregs", "CD8 exhausted T cells"), bcc_counts, cell.ident.matrix = cell_ident_matrix)
+compare_tregs_mel <- compare_cluster("melanoma","Regulatory_T-cells", list("Chronically act/ex CD8 T cells", "Tregs"), combined_counts, cell.ident.matrix = cell_ident_matrix)
+compare_cd8_tregs_bcc <- compare_cluster("BCC","CD8_ex_T_cells", list("Tregs", "CD8 exhausted T cells"), combined_counts, cell.ident.matrix = cell_ident_matrix)
 
 
 
