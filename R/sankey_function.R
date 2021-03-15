@@ -1,3 +1,7 @@
+library(ggsci)
+BiocManager::install("scales")
+library(scales)
+
 #' Plot Sankey diagram comparing two clusterings
 #' 
 #' Sometimes it is useful to see how the clusters in two different clustering
@@ -92,3 +96,6 @@ getSankey <- function(reference, clusters, plot_width = 400, plot_height = 600, 
   
   return(Sankey)
 }
+
+plot(getSankey(cell_ident_matrix$cluster, cell_ident_matrix$annotation, colors = c('#FF0000', '#FFA500', '#008000', '#007780', '#007780')))
+

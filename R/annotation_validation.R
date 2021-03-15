@@ -7,6 +7,7 @@ library(fgsea)
 library(msigdbr)
 library(pheatmap)
 library(Seurat)
+library(EnvStats)
 
 # Rationale: Following integration and cell annotation, certain cells changed annotations to something different. The purpose
 # of this function is to compare cells who's annotation changed from those that did not. Comparisons are made through 
@@ -52,35 +53,13 @@ compare_cluster <- function(batch, orig.ident, compare, counts.matrix, cell.iden
                     minSize  = 30,
                     maxSize  = 300)
   
-  return_list <- list(fgseaRes, markers)
+  return_list <- list(fgseaRes, markers, counts, cluster_combined)
   return(return_list)
   
 }
 
 compare_tregs_mel <- compare_cluster("melanoma","Regulatory_T-cells", list("Chronically act/ex CD8 T cells", "Tregs"), counts_mel, cell.ident.matrix = cell_ident_matrix)
-compare_cd8_tregs_bcc <- compare_cluster("bcc","CD8_ex_T_cells", list("Tregs", "CD8 exhausted T cells"), bcc_counts, cell.ident.matrix = cell_ident_matrix)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+compare_cd8_tregs_bcc <- compare_cluster("BCC","CD8_ex_T_cells", list("Tregs", "CD8 exhausted T cells"), bcc_counts, cell.ident.matrix = cell_ident_matrix)
 
 
 
