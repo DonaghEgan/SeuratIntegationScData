@@ -20,6 +20,9 @@ library(EnvStats)
 #' @param counts.matrix counts matrix - in this case using normalised counts - from a combined melanoma and bcc seurat object
 #' @param cell.ident.matrix matrix containing batch, new annotation, and old annotation info 
 
+#' @return a list object containing deferentially expressed genes between clusters (compare parameter), the subsequent gsea
+#' and the counts/meta matrix used for this calculation 
+
 
 compare_cluster <- function(batch, orig.ident, compare, counts.matrix, cell.ident.matrix){
   
@@ -59,6 +62,7 @@ compare_cluster <- function(batch, orig.ident, compare, counts.matrix, cell.iden
 }
 
 compare_tregs_mel <- compare_cluster("melanoma","Regulatory_T-cells", list("Chronically act/ex CD8 T cells", "Tregs"), combined_counts, cell.ident.matrix = cell_ident_matrix)
+compare_memory_naive_mel <- compare_cluster("melanoma","Memory_T-cells", list("Chronically act/ex CD8 T cells", "Naive CD4 T cells"), combined_counts, cell.ident.matrix = cell_ident_matrix)
 compare_cd8_tregs_bcc <- compare_cluster("BCC","CD8_ex_T_cells", list("Tregs", "CD8 exhausted T cells"), combined_counts, cell.ident.matrix = cell_ident_matrix)
 
 

@@ -102,6 +102,6 @@ cell_ident_mel <- cell_ident_matrix %>% filter(batch== "melanoma")
 cell_ident_bcc <- cell_ident_matrix %>% filter(batch== "BCC")
 
 #plotting bcc and melanoma sankeys respectively 
-plot(getSankey(cell_ident_mel$cluster, cell_ident_mel$annotation, colors = c('#FF0000', '#FFA500', '#008000', '#007780', '#007780')))
-plot(getSankey(cell_ident_bcc$cluster, cell_ident_bcc$annotation, colors = c('#FFA500', '#008000', '#007780', '#007780','#FF0000')))
+plot(getSankey(cell_ident_mel$cluster, cell_ident_mel$annotation, plot_width = 600, colors = c('#FF0000', '#FFA500', '#008000', '#007780', '#007780')))
+plot(getSankey(cell_ident_bcc$cluster, cell_ident_bcc$annotation, plot_width=600, colors = c('#FFA500', '#008000', '#007780', '#007780','#FF0000')))
 
